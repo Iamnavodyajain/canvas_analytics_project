@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canva Product Analytics — Purple & Black Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS Variables for Purple & Black Canva Theme */
+    :root {
+      --primary-plum: #7E69AB;
+      --primary-violet: #9D8AC7;
+      --primary-lavender: #B8A8E6;
+      --primary-lilac: #E6E1F7;
+      
+      --accent-pink: #FF9FE5;
+      --accent-mint: #A3D9B1;
+      --accent-yellow: #FFD166;
+      --accent-coral: #EF8A8C;
+      
+      --dark-bg: #0A0714;
+      --dark-card: #110D1F;
+      --dark-surface: #18142D;
+      --dark-border: #2A2545;
+      
+      --text-primary: #F5F3FF;
+      --text-secondary: #D1CCE8;
+      --text-tertiary: #8E88B0;
+      
+      --gradient-primary: linear-gradient(135deg, var(--primary-plum), var(--primary-violet));
+      --gradient-dark: linear-gradient(135deg, #110D1F, #18142D);
+      --gradient-accent: linear-gradient(135deg, var(--accent-pink), var(--accent-coral));
+      
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.5);
+      --shadow-strong: 0 15px 50px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 30px rgba(126, 105, 171, 0.2);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-round: 24px;
+      
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 32px;
+      --spacing-xl: 48px;
+      --spacing-2xl: 64px;
+      
+      --font-size-xs: 12px;
+      --font-size-sm: 14px;
+      --font-size-base: 16px;
+      --font-size-lg: 18px;
+      --font-size-xl: 20px;
+      --font-size-2xl: 24px;
+      --font-size-3xl: 28px;
+      
+      --transition-fast: 0.2s ease;
+      --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.5s ease;
+    }
+    
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(126, 105, 171, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(184, 168, 230, 0.15) 0%, transparent 40%),
+        linear-gradient(180deg, var(--dark-bg) 0%, #0D0921 100%);
+      padding: var(--spacing-md);
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.3;
+      margin-top: 0;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    
+    h1 {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    h2 {
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    h3 {
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    h4 {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    p {
+      margin-top: 0;
+      margin-bottom: var(--spacing-md);
+      color: var(--text-secondary);
+    }
+    
+    .text-meta {
+      color: var(--text-tertiary);
+      font-size: var(--font-size-sm);
+      line-height: 1.4;
+    }
+    
+    .text-small {
+      font-size: var(--font-size-sm);
+    }
+    
+    /* Header - Purple & Black Theme */
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xl);
+      padding: var(--spacing-lg);
+      background: var(--dark-card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--dark-border);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+    }
+    
+    .dashboard-header:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+      border-color: var(--primary-plum);
+      background: linear-gradient(135deg, #110D1F, #18142D);
+    }
+    
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    
+    .logo-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-round);
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-medium);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .logo-circle::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.1) 100%);
+    }
+    
+    .header-text h1 {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Cards - Purple & Black Theme */
+    .floating-card {
+      background: var(--dark-card);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--dark-border);
+      transition: all var(--transition-base);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .floating-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+      border-color: var(--primary-violet);
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-lg);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    
+    .card-header-gradient {
+      margin-bottom: var(--spacing-lg);
+      padding: var(--spacing-md);
+      background: linear-gradient(90deg, rgba(126, 105, 171, 0.15), rgba(126, 105, 171, 0.08));
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--primary-plum);
+    }
+    
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .card-title i {
+      color: var(--primary-lavender);
+    }
+    
+    .card-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--dark-border), transparent);
+      margin: var(--spacing-lg) 0;
+    }
+    
+    /* KPI Dashboard Grid */
+    .kpi-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--spacing-md);
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .kpi-tile {
+      background: var(--dark-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      text-align: center;
+      border: 1px solid var(--dark-border);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .kpi-tile::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    
+    .kpi-tile.purple-gradient::before {
+      background: var(--gradient-primary);
+    }
+    
+    .kpi-tile.violet-gradient::before {
+      background: linear-gradient(90deg, var(--primary-violet), var(--primary-lavender));
+    }
+    
+    .kpi-tile.plum-gradient::before {
+      background: linear-gradient(90deg, var(--primary-plum), #6B5B95);
+    }
+    
+    .kpi-tile.lavender-gradient::before {
+      background: linear-gradient(90deg, var(--primary-lavender), var(--primary-lilac));
+    }
+    
+    .kpi-tile:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--primary-plum);
+    }
+    
+    .kpi-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(126, 105, 171, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-sm);
+      font-size: 20px;
+      color: var(--primary-lavender);
+      transition: all var(--transition-base);
+    }
+    
+    .kpi-tile:hover .kpi-icon {
+      transform: scale(1.1);
+      background: var(--gradient-primary);
+      color: var(--text-primary);
+    }
+    
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: var(--spacing-sm) 0;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .kpi-label {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+    
+    .kpi-trend {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      margin-top: var(--spacing-xs);
+    }
+    
+    .kpi-trend.positive {
+      background: rgba(163, 217, 177, 0.2);
+      color: var(--accent-mint);
+      border: 1px solid rgba(163, 217, 177, 0.3);
+    }
+    
+    .kpi-trend.negative {
+      background: rgba(239, 138, 140, 0.2);
+      color: var(--accent-coral);
+      border: 1px solid rgba(239, 138, 140, 0.3);
+    }
+    
+    /* Visualizations Placeholder Section */
+    .visualizations-placeholder {
+      margin-top: var(--spacing-lg);
+    }
+    
+    .visualization-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .visualization-item {
+      background: var(--dark-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      border: 1px solid var(--dark-border);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .visualization-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--primary-lavender);
+    }
+    
+    .visualization-placeholder {
+      height: 220px;
+      background: linear-gradient(135deg, rgba(126, 105, 171, 0.1), rgba(184, 168, 230, 0.05));
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-tertiary);
+      margin-top: var(--spacing-md);
+      border: 2px dashed var(--dark-border);
+      transition: all var(--transition-base);
+    }
+    
+    .visualization-item:hover .visualization-placeholder {
+      border-color: var(--primary-lavender);
+      background: linear-gradient(135deg, rgba(126, 105, 171, 0.15), rgba(184, 168, 230, 0.08));
+    }
+    
+    .visualization-placeholder i {
+      font-size: 48px;
+      margin-bottom: var(--spacing-sm);
+      color: var(--primary-lavender);
+      opacity: 0.7;
+    }
+    
+    .visualization-title {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .visualization-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--text-primary);
+      flex-shrink: 0;
+    }
+    
+    /* Tabs - Purple & Black Theme */
+    .tabs-container {
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .tabs-header {
+      display: flex;
+      gap: 4px;
+      background: var(--dark-surface);
+      padding: 8px;
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-lg);
+      border: 1px solid var(--dark-border);
+    }
+    
+    .tab {
+      flex: 1;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border: none;
+      background: transparent;
+      color: var(--text-tertiary);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+    
+    .tab:hover {
+      background: rgba(126, 105, 171, 0.15);
+      color: var(--text-secondary);
+    }
+    
+    .tab.active {
+      background: var(--gradient-primary);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* AARRR Grid - Purple & Black Theme */
+    .aarrr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+    }
+    
+    .aarrr-card {
+      background: var(--dark-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      border-left: 4px solid var(--primary-violet);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .aarrr-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(126, 105, 171, 0.08) 100%);
+      opacity: 0;
+      transition: opacity var(--transition-base);
+    }
+    
+    .aarrr-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+      border-color: var(--primary-lavender);
+    }
+    
+    .aarrr-card:hover::before {
+      opacity: 1;
+    }
+    
+    .aarrr-card:nth-child(2) {
+      border-left-color: var(--accent-mint);
+    }
+    
+    .aarrr-card:nth-child(3) {
+      border-left-color: var(--accent-yellow);
+    }
+    
+    .aarrr-card:nth-child(4) {
+      border-left-color: var(--accent-pink);
+    }
+    
+    /* Retention Metrics - Purple & Black Theme */
+    .retention-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--spacing-md);
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .retention-card {
+      background: var(--dark-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      text-align: center;
+      border: 1px solid var(--dark-border);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .retention-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      opacity: 0.8;
+    }
+    
+    .retention-card:nth-child(1)::before {
+      background: linear-gradient(90deg, var(--accent-mint), #A3D9B1);
+    }
+    
+    .retention-card:nth-child(2)::before {
+      background: linear-gradient(90deg, var(--accent-yellow), #FFD166);
+    }
+    
+    .retention-card:nth-child(3)::before {
+      background: linear-gradient(90deg, var(--accent-coral), #EF8A8C);
+    }
+    
+    .retention-card:nth-child(4)::before {
+      background: linear-gradient(90deg, var(--accent-pink), #FF9FE5);
+    }
+    
+    .retention-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--primary-lavender);
+    }
+    
+    .retention-value {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+      margin: var(--spacing-sm) 0;
+    }
+    
+    .retention-card:nth-child(1) .retention-value {
+      background: linear-gradient(90deg, var(--accent-mint), #A3D9B1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .retention-card:nth-child(2) .retention-value {
+      background: linear-gradient(90deg, var(--accent-yellow), #FFD166);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .retention-card:nth-child(3) .retention-value {
+      background: linear-gradient(90deg, var(--accent-coral), #EF8A8C);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .retention-card:nth-child(4) .retention-value {
+      background: linear-gradient(90deg, var(--accent-pink), #FF9FE5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Accordions - Purple & Black Theme */
+    .accordion {
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .accordion-item {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-sm);
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+    
+    .accordion-item:hover {
+      border-color: var(--primary-lavender);
+    }
+    
+    .accordion-item.active {
+      border-color: var(--primary-violet);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .accordion-header {
+      padding: var(--spacing-lg);
+      background: rgba(126, 105, 171, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: background var(--transition-base);
+    }
+    
+    .accordion-header:hover {
+      background: rgba(126, 105, 171, 0.15);
+    }
+    
+    .accordion-header::after {
+      content: '+';
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--primary-lavender);
+      transition: transform var(--transition-base);
+    }
+    
+    .accordion-item.active .accordion-header::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    
+    .accordion-content {
+      padding: 0 var(--spacing-lg);
+      max-height: 0;
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+    
+    .accordion-item.active .accordion-content {
+      padding: var(--spacing-lg);
+      max-height: 500px;
+    }
+    
+    /* Recommendations Grid - Purple & Black Theme */
+    .recommendations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-md);
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .recommendation-card {
+      background: var(--dark-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      border: 1px solid var(--dark-border);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .recommendation-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(126, 105, 171, 0.08) 100%);
+      opacity: 0;
+      transition: opacity var(--transition-base);
+    }
+    
+    .recommendation-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-glow);
+      border-color: var(--primary-lavender);
+    }
+    
+    .recommendation-card:hover::before {
+      opacity: 1;
+    }
+    
+    .recommendation-category {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--gradient-primary);
+      color: var(--text-primary);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      border-radius: 20px;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    /* Insights List - Purple & Black Theme */
+    .insights-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .insights-list li {
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+      background: rgba(126, 105, 171, 0.08);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--primary-violet);
+      position: relative;
+      padding-left: calc(var(--spacing-lg) + 10px);
+      transition: all var(--transition-base);
+    }
+    
+    .insights-list li:hover {
+      transform: translateX(8px);
+      background: rgba(126, 105, 171, 0.15);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .insights-list li::before {
+      content: '→';
+      position: absolute;
+      left: var(--spacing-sm);
+      color: var(--primary-lavender);
+      font-weight: bold;
+      transition: transform var(--transition-base);
+    }
+    
+    .insights-list li:hover::before {
+      transform: translateX(4px);
+    }
+    
+    /* Layout - Dashboard Grid */
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: var(--spacing-xl);
+      align-items: start;
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    @media (max-width: 1200px) {
+      .dashboard-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Sidebar - Purple & Black Theme */
+    .insights-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      position: sticky;
+      top: var(--spacing-md);
+    }
+    
+    .sidebar-card {
+      background: var(--dark-card);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-lg);
+      border: 1px solid var(--dark-border);
+      transition: all var(--transition-base);
+    }
+    
+    .sidebar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+      border-color: var(--primary-lavender);
+    }
+    
+    /* Timeline */
+    .timeline {
+      margin: var(--spacing-md) 0;
+    }
+    
+    .timeline-point {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      padding: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-base);
+    }
+    
+    .timeline-point:hover {
+      background: rgba(126, 105, 171, 0.15);
+    }
+    
+    .timeline-point.active .point-circle {
+      background: var(--gradient-primary);
+      box-shadow: 0 0 0 4px rgba(126, 105, 171, 0.25);
+    }
+    
+    .timeline-point.critical .point-circle {
+      background: var(--accent-coral);
+    }
+    
+    .point-circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text-tertiary);
+      flex-shrink: 0;
+      transition: all var(--transition-base);
+    }
+    
+    .point-info {
+      flex: 1;
+    }
+    
+    .point-day {
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    
+    .point-rate {
+      font-weight: 700;
+      font-size: var(--font-size-lg);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Key Metrics List */
+    .key-metrics {
+      list-style: none;
+      padding: 0;
+      margin: var(--spacing-md) 0 0 0;
+    }
+    
+    .key-metrics li {
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--dark-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all var(--transition-fast);
+    }
+    
+    .key-metrics li:hover {
+      padding-left: var(--spacing-sm);
+      background: rgba(126, 105, 171, 0.08);
+      border-radius: var(--radius-sm);
+    }
+    
+    .key-metrics li:last-child {
+      border-bottom: none;
+    }
+    
+    .metric-value {
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--spacing-md);
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--spacing-md);
+      background: var(--dark-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--dark-border);
+      transition: all var(--transition-base);
+    }
+    
+    .feature-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-violet);
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-round);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: var(--spacing-sm);
+      transition: all var(--transition-base);
+    }
+    
+    .feature-icon.templates {
+      background: rgba(126, 105, 171, 0.25);
+      color: var(--primary-lavender);
+    }
+    
+    .feature-icon.ai {
+      background: rgba(255, 159, 229, 0.2);
+      color: var(--accent-pink);
+    }
+    
+    .feature-item:hover .feature-icon {
+      transform: scale(1.1);
+    }
+    
+    .feature-stats {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      margin-top: var(--spacing-xs);
+    }
+    
+    .usage-rate {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .trend.up {
+      color: var(--accent-mint);
+    }
+    
+    /* Footer - Purple & Black Theme */
+    .footer {
+      margin-top: var(--spacing-xl);
+      padding: var(--spacing-lg);
+      background: var(--dark-card);
+      border-radius: var(--radius-xl);
+      text-align: center;
+      color: var(--text-tertiary);
+      font-size: var(--font-size-sm);
+      border: 1px solid var(--dark-border);
+      transition: all var(--transition-base);
+    }
+    
+    .footer:hover {
+      border-color: var(--primary-lavender);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    /* Disclaimer Popup - Purple & Black Theme */
+    .disclaimer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 7, 20, 0.97);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-base);
+    }
+    
+    .disclaimer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .disclaimer-popup {
+      background: var(--dark-card);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      max-width: 500px;
+      width: 90%;
+      border: 2px solid var(--primary-plum);
+      box-shadow: var(--shadow-strong);
+      transform: translateY(20px);
+      transition: transform var(--transition-base);
+      position: relative;
+    }
+    
+    .disclaimer-overlay.active .disclaimer-popup {
+      transform: translateY(0);
+    }
+    
+    .disclaimer-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--text-primary);
+      margin: 0 auto var(--spacing-md);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .disclaimer-title {
+      text-align: center;
+      margin-bottom: var(--spacing-md);
+      font-size: var(--font-size-lg);
+      color: var(--text-primary);
+    }
+    
+    .disclaimer-content {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-lg);
+      text-align: center;
+      font-size: var(--font-size-sm);
+    }
+    
+    .disclaimer-close {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--gradient-primary);
+      color: var(--text-primary);
+      border: none;
+      border-radius: var(--radius-lg);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-size: var(--font-size-sm);
+    }
+    
+    .disclaimer-close:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    /* Persona Pills - Purple & Black Theme */
+    .pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      margin-right: var(--spacing-xs);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .pill:nth-child(1) {
+      background: rgba(126, 105, 171, 0.25);
+      color: var(--primary-lavender);
+      border: 1px solid rgba(126, 105, 171, 0.3);
+    }
+    
+    .pill:nth-child(2) {
+      background: rgba(255, 159, 229, 0.2);
+      color: var(--accent-pink);
+      border: 1px solid rgba(255, 159, 229, 0.3);
+    }
+    
+    .pill:nth-child(3) {
+      background: rgba(163, 217, 177, 0.2);
+      color: var(--accent-mint);
+      border: 1px solid rgba(163, 217, 177, 0.3);
+    }
+    
+    /* Project Resources Section */
+    .project-resources {
+      margin-top: var(--spacing-md);
+    }
+    
+    .resource-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      background: var(--gradient-primary);
+      color: var(--text-primary);
+      border: none;
+      border-radius: var(--radius-lg);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-decoration: none;
+      text-align: center;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .resource-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+      background: linear-gradient(135deg, var(--primary-violet), var(--primary-plum));
+    }
+    
+    .resource-btn i {
+      font-size: 18px;
+    }
+    
+    /* Author Section Styles */
+    .author-section {
+      margin-top: var(--spacing-xl);
+    }
+    
+    .author-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .author-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 3px solid var(--primary-lavender);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    .author-info {
+      flex: 1;
+    }
+    
+    .author-name {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 4px;
+    }
+    
+    .author-title {
+      color: var(--primary-lavender);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+    }
+    
+    .author-bio {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .author-links {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+    
+    .author-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(126, 105, 171, 0.15);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      transition: all var(--transition-base);
+      border: 1px solid var(--dark-border);
+    }
+    
+    .author-link:hover {
+      background: rgba(126, 105, 171, 0.25);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+      border-color: var(--primary-lavender);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .author-link i {
+      font-size: 16px;
+      color: var(--primary-lavender);
+      transition: transform var(--transition-base);
+    }
+    
+    .author-link:hover i {
+      transform: scale(1.1);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .dashboard-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .insights-sidebar {
+        position: static;
+        order: -1;
+      }
+      
+      .kpi-dashboard {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .visualization-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .author-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+      }
+      
+      .author-links {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: var(--spacing-sm);
+      }
+      
+      .dashboard-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+      }
+      
+      .logo-area {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .kpi-dashboard {
+        grid-template-columns: 1fr;
+      }
+      
+      .aarrr-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .retention-metrics {
+        grid-template-columns: 1fr;
+      }
+      
+      .recommendations-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .author-links {
+        flex-direction: column;
+      }
+      
+      .author-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Disclaimer Popup -->
+  <div class="disclaimer-overlay" id="disclaimerPopup">
+    <div class="disclaimer-popup">
+      <div class="disclaimer-icon">
+        <i class="fas fa-chart-bar"></i>
+      </div>
+      <h3 class="disclaimer-title">Synthetic Data Analysis</h3>
+      <div class="disclaimer-content">
+        This analysis uses fully synthetic data and is intended only to demonstrate my product analytics skills. It does not reflect real Canva user behavior or internal data.
+      </div>
+      <button class="disclaimer-close" id="closeDisclaimer">I Understand</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="logo-area">
+        <div class="logo-circle">
+          <img src="resources/canvas_logo.png" alt="Canvas logo" style="width:56px; height:56px; object-fit:cover; border-radius:12px;" loading="lazy" />
+        </div>
+        <div class="header-text">
+          <h1>Canva Product Analytics Dashboard</h1>
+          <p class="text-meta">Author: Navodya Jain • Synthetic dataset (10,000 users)</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+      <!-- Main Content Column -->
+      <main>
+        <!-- Executive Summary -->
+        <section class="floating-card">
+          <div class="card-header-gradient">
+            <h2 class="card-title"><i class="fas fa-chart-line"></i> Executive Summary</h2>
+            <div class="text-meta">Project date: December 2025</div>
+          </div>
+          
+          <p>
+            This portfolio case study simulates <strong>10,000 Canva-like users</strong> and tracks them across acquisition, onboarding, feature adoption,
+            retention, revenue, and referrals. The product delivers <strong>strong first-value (≈65% activation via first design creation)</strong>
+            and <strong>healthy monetization among engaged users (ARPPU ≈ $51)</strong>, but suffers from <strong>severe long-term churn
+            (D30 ≈ 0.24%)</strong>. Revenue and stickiness are heavily concentrated among users who adopt <strong>Brand Kit, AI tools,
+            collaboration, and exports</strong>, which emerge as the core levers for growth and retention.
+          </p>
+          <p>
+            The rest of this report focuses on: (1) tightening the onboarding → export journey, (2) building habit loops beyond the
+            first project, and (3) aggressively pushing high-value features earlier in the lifecycle to turn more casual users into
+            power users and paying teams.
+          </p>
+          
+          <!-- KPI Dashboard -->
+          <div class="kpi-dashboard">
+            <div class="kpi-tile purple-gradient">
+              <div class="kpi-icon"><i class="fas fa-rocket"></i></div>
+              <div class="kpi-value">65%</div>
+              <div class="kpi-label">Activation Rate (First Design)</div>
+              <div class="kpi-trend positive">Strong first value</div>
+            </div>
+            <div class="kpi-tile violet-gradient">
+              <div class="kpi-icon"><i class="fas fa-user-clock"></i></div>
+              <div class="kpi-value">0.24%</div>
+              <div class="kpi-label">D30 Retention</div>
+              <div class="kpi-trend negative">Critical drop-off</div>
+            </div>
+            <div class="kpi-tile plum-gradient">
+              <div class="kpi-icon"><i class="fas fa-money-bill-wave"></i></div>
+              <div class="kpi-value">$215K</div>
+              <div class="kpi-label">Total Revenue (Synthetic)</div>
+              <div class="kpi-trend positive">Monetization healthy</div>
+            </div>
+            <div class="kpi-tile lavender-gradient">
+              <div class="kpi-icon"><i class="fas fa-crown"></i></div>
+              <div class="kpi-value">$51</div>
+              <div class="kpi-label">ARPPU</div>
+              <div class="kpi-trend positive">High-value users</div>
+            </div>
+          </div>
+          
+          <!-- Tabs Section -->
+          <div class="tabs-container">
+            <div class="tabs-header">
+              <button class="tab active" data-tab="findings">Key Findings</button>
+              <button class="tab" data-tab="opportunities">Opportunities</button>
+              <button class="tab" data-tab="personas">User Personas</button>
+            </div>
+            
+            <!-- Findings Tab -->
+            <div id="findings" class="tab-content active">
+              <div class="aarrr-grid">
+                <div class="aarrr-card">
+                  <h4><i class="fas fa-check-circle"></i> Strong Activation & First Value</h4>
+                  <p class="text-meta">
+                    ~65% of acquired users complete onboarding and create at least one design. The editor and templates do a
+                    good job of delivering immediate value once users enter the product.
+                  </p>
+                </div>
+                <div class="aarrr-card">
+                  <h4><i class="fas fa-exclamation-triangle"></i> Severe Retention Cliff</h4>
+                  <p class="text-meta">
+                    D7 retention is reasonable but by D30 only ~0.24% of users remain active. Most users appear to complete a
+                    single project and then fail to build a recurring creation habit.
+                  </p>
+                </div>
+                <div class="aarrr-card">
+                  <h4><i class="fas fa-chart-pie"></i> High-Value Behaviours = Revenue</h4>
+                  <p class="text-meta">
+                    Brand Kit usage, AI tools, collaboration, and exports are the strongest signals of power users. These
+                    behaviours correlate with Pro / Teams revenue and better retention.
+                  </p>
+                </div>
+                <div class="aarrr-card">
+                  <h4><i class="fas fa-users"></i> Monetization Concentrated in Segments</h4>
+                  <p class="text-meta">
+                    While many users are students or casual creators, most revenue is driven by SMB owners and social media
+                    managers on Pro Yearly and Teams plans.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Opportunities Tab -->
+            <div id="opportunities" class="tab-content">
+              <div class="funnel-container">
+                <h4><i class="fas fa-bullseye"></i> Top Product Opportunities</h4>
+                <div class="funnel-visual">
+                  <div class="funnel-stage">
+                    <div class="stage-label">Retention & Habit Loops</div>
+                    <div class="stage-value">Priority 1</div>
+                    <div class="stage-percent">High Impact</div>
+                  </div>
+                  <div class="funnel-stage">
+                    <div class="stage-label">Early Feature Adoption</div>
+                    <div class="stage-value">Priority 2</div>
+                    <div class="stage-percent">High Impact</div>
+                  </div>
+                  <div class="funnel-stage">
+                    <div class="stage-label">Experimentation Velocity</div>
+                    <div class="stage-value">Priority 3</div>
+                    <div class="stage-percent">Medium</div>
+                  </div>
+                  <div class="funnel-stage">
+                    <div class="stage-label">Teams & Collaboration</div>
+                    <div class="stage-value">Priority 4</div>
+                    <div class="stage-percent">Medium</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Personas Tab -->
+            <div id="personas" class="tab-content">
+              <div class="floating-card">
+                <h4><i class="fas fa-user-tag"></i> User Personas</h4>
+                <p>Different user types experience Canva differently; the analysis segments them into 3 simplified personas:</p>
+                
+                <div class="accordion">
+                  <div class="accordion-item">
+                    <div class="accordion-header"><span class="pill">Student</span> <i class="fas fa-graduation-cap"></i> Fast single-use creation, low monetization</div>
+                    <div class="accordion-content">
+                      <p class="text-meta">
+                        Needs: Quick, polished slides and assignments. Behaviour: Project-based, often one-and-done.
+                        Opportunity: Educational starter packs and gentle nudges into side-project or portfolio use cases.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <div class="accordion-header"><span class="pill">Creator</span> <i class="fas fa-paint-brush"></i> Regular design needs, export-heavy</div>
+                    <div class="accordion-content">
+                      <p class="text-meta">
+                        Needs: Fast content production for social channels. Behaviour: Frequent exports, template remixing.
+                        Opportunity: Content calendars, batch exports and AI-assisted variations.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <div class="accordion-header"><span class="pill">SMB Owner</span> <i class="fas fa-briefcase"></i> Branding, marketing workflows</div>
+                    <div class="accordion-content">
+                      <p class="text-meta">
+                        Needs: Brand consistency across channels and teams. Behaviour: Seasonal campaigns, team usage.
+                        Opportunity: Teams plans, brand kits, shared asset libraries and approval workflows.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Data Visualizations Section (images from `graphs/`) -->
+        <section class="floating-card visualizations-placeholder">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fas fa-chart-bar"></i> Data Visualizations & Insights Dashboard</h2>
+            <div class="text-meta">Key charts and heatmaps from the exploratory analysis</div>
+          </div>
+
+          <div class="visualization-intro">
+            <p>
+              The visualizations below are the finalized charts produced during analysis. Each card contains the image file
+              from the `graphs/` folder and a brief caption summarizing the insight represented.
+            </p>
+          </div>
+
+          <div class="visualization-grid">
+            <div class="visualization-item">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-map"></i></div>
+                <div>
+                  <h4>Persona vs Acquisition Channel — Heatmap</h4>
+                  <p class="text-meta">Concentration of user acquisition by persona and channel</p>
+                </div>
+              </div>
+              <img src="graphs/persona_vs_acqusition_channel.png" alt="Persona vs Acquisition Channel heatmap" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+
+            <div class="visualization-item">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div>
+                  <h4>Persona vs Device Usage — Heatmap</h4>
+                  <p class="text-meta">Device preferences across user segments</p>
+                </div>
+              </div>
+              <img src="graphs/persona_vs_device_channel.png" alt="Persona vs Device Usage heatmap" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+
+            <div class="visualization-item">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-share-alt"></i></div>
+                <div>
+                  <h4>Referral Channels — Bar Plot</h4>
+                  <p class="text-meta">Distribution of referral sources and conversion signals</p>
+                </div>
+              </div>
+              <img src="graphs/refral_channel.png" alt="Referral channels bar plot" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+
+            <div class="visualization-item">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-users"></i></div>
+                <div>
+                  <h4>Persona Distribution</h4>
+                  <p class="text-meta">Share of user personas across the dataset</p>
+                </div>
+              </div>
+              <img src="graphs/persona_distribution.png" alt="Persona distribution" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+
+            <div class="visualization-item">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-crown"></i></div>
+                <div>
+                  <h4>Revenue by Subscription Plan</h4>
+                  <p class="text-meta">Revenue contribution and distribution across plans</p>
+                </div>
+              </div>
+              <img src="graphs/REVENUE_BY_SUBSCRIPTION.png" alt="Revenue by subscription plan" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+
+            <div class="visualization-item">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-flask"></i></div>
+                <div>
+                  <h4>ARPU by Variant — A/B Test Results</h4>
+                  <p class="text-meta">ARPU comparison across experiment variants</p>
+                </div>
+              </div>
+              <img src="graphs/ARPU%20AB.png" alt="ARPU by variant A/B test" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+
+            <div class="visualization-item" style="grid-column: span 2;">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-th-large"></i></div>
+                <div>
+                  <h4>Monthly Retention Cohort — Heatmap</h4>
+                  <p class="text-meta">Cohort retention over time (monthly cohorts)</p>
+                </div>
+              </div>
+              <img src="graphs/monthly_retention_cohort_heatmap.png" alt="Monthly retention cohort heatmap" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+
+            <div class="visualization-item">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <div>
+                  <h4>Churn Reasons — Categorical Summary</h4>
+                  <p class="text-meta">Breakdown of primary churn reasons identified in the analysis</p>
+                </div>
+              </div>
+              <img src="graphs/CHURN%20RESASONS.png" alt="Churn reasons summary" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+
+            <div class="visualization-item">
+              <div class="visualization-title">
+                <div class="visualization-icon"><i class="fas fa-compass"></i></div>
+                <div>
+                  <h4>North Star Metric — Snapshot</h4>
+                  <p class="text-meta">Visualization tied to the chosen north star metric</p>
+                </div>
+              </div>
+              <img src="graphs/north_star_matric.png" alt="North star metric snapshot" style="width:100%; height:auto; border-radius:8px; margin-top:12px;" />
+            </div>
+          </div>
+        </section>
+        
+        <!-- AARRR Deep-Dive -->
+        <section class="floating-card" style="margin-top: var(--spacing-lg);">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fas fa-sitemap"></i> AARRR Funnel Analysis</h2>
+            <div class="text-meta">Complete funnel breakdown</div>
+          </div>
+          
+          <div class="aarrr-grid">
+            <div class="aarrr-card">
+              <h4><i class="fas fa-user-plus"></i> Acquisition → Activation</h4>
+              <p class="text-meta">
+                10,000 users are acquired across channels. ~65% complete onboarding and reach the first-design milestone.
+                Top-of-funnel is healthy and the value proposition is clear once users start editing.
+              </p>
+            </div>
+            
+            <div class="aarrr-card">
+              <h4><i class="fas fa-calendar-check"></i> Retention</h4>
+              <p class="text-meta">
+                D7 Retention ≈ 20%; by D30 only ~0.24% of users are active. This suggests that once the first project is done,
+                Canva is not yet embedded into users' ongoing workflows – a classic "single project" churn pattern.
+              </p>
+            </div>
+            
+            <div class="aarrr-card">
+              <h4><i class="fas fa-wallet"></i> Revenue</h4>
+              <p class="text-meta">
+                Total synthetic revenue ≈ <strong>$215,145</strong>. ARPU ≈ $21.51 and ARPPU ≈ $51.01. Pro Yearly & Teams
+                account for a large share of revenue, especially among SMB and power users.
+              </p>
+            </div>
+            
+            <div class="aarrr-card">
+              <h4><i class="fas fa-share-alt"></i> Referral</h4>
+              <p class="text-meta">
+                ~12.57% of users send at least one referral. Link sharing and social channels dominate.
+                There is room to convert referrals into a more structured growth loop with milestone-based rewards.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Retention Metrics -->
+          <div class="retention-metrics">
+            <div class="retention-card">
+              <div class="text-meta">Day 1</div>
+              <div class="retention-value">65%</div>
+              <div class="text-meta">Reach first design</div>
+            </div>
+            <div class="retention-card">
+              <div class="text-meta">Day 7</div>
+              <div class="retention-value">20%</div>
+              <div class="text-meta">Remain active</div>
+            </div>
+            <div class="retention-card">
+              <div class="text-meta">Day 14</div>
+              <div class="retention-value">8%</div>
+              <div class="text-meta">Early habit signals</div>
+            </div>
+            <div class="retention-card">
+              <div class="text-meta">Day 30</div>
+              <div class="retention-value">0.24%</div>
+              <div class="text-meta">Long-term retention risk</div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Feature Usage -->
+        <section class="floating-card" style="margin-top: var(--spacing-lg);">
+          <div class="card-header">
+            <h2 class="card-title"><i class="fas fa-puzzle-piece"></i> Feature Usage Analysis</h2>
+            <div class="text-meta">Adoption rates and impact</div>
+          </div>
+          
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon templates"><i class="fas fa-cubes"></i></div>
+              <div class="feature-name">Templates</div>
+              <div class="feature-stats">
+                <span class="usage-rate">85%</span>
+                <span class="trend up">↑</span>
+              </div>
+              <div class="text-meta">Primary value unlock; most designs start from templates.</div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon ai"><i class="fas fa-brain"></i></div>
+              <div class="feature-name">AI Tools</div>
+              <div class="feature-stats">
+                <span class="usage-rate">40%</span>
+                <span class="trend up">↑</span>
+              </div>
+              <div class="text-meta">Strong adoption; signals advanced users and higher willingness to pay.</div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon" style="background: rgba(126, 105, 171, 0.25); color: var(--primary-lavender);">
+                <i class="fas fa-palette"></i>
+              </div>
+              <div class="feature-name">Brand Kit</div>
+              <div class="feature-stats">
+                <span class="usage-rate">32%</span>
+                <span class="trend up">↑</span>
+              </div>
+              <div class="text-meta">Strongly predicts Pro / Teams upgrades and higher revenue per user.</div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon" style="background: rgba(255, 209, 102, 0.2); color: var(--accent-yellow);">
+                <i class="fas fa-handshake"></i></div>
+              <div class="feature-name">Collaboration</div>
+              <div class="feature-stats">
+                <span class="usage-rate">9%</span>
+                <span class="trend up">↑</span>
+              </div>
+              <div class="text-meta">Low penetration but high value for SMBs and teams – big growth lever.</div>
+            </div>
+          </div>
+          
+          <div class="card-divider"></div>
+          
+          <h4 style="margin-top: var(--spacing-lg); color: var(--primary-lavender);">Revenue Correlation – What Matters Most</h4>
+          <ul class="insights-list">
+            <li>Brand Kit usage has the strongest correlation with higher revenue and subscription likelihood.</li>
+            <li>AI Tool usage is a reliable signal of power users with more complex creation needs.</li>
+            <li>Exports mark the "moment of value realized" and align closely with both retention and monetization.</li>
+            <li>Collaboration events are concentrated among the highest-paying SMB and Teams users.</li>
+          </ul>
+        </section>
+      </main>
+      
+      <!-- Sidebar Column -->
+      <aside class="insights-sidebar">
+        <!-- Key Metrics Dashboard -->
+        <div class="sidebar-card">
+          <div class="card-header">
+            <h3><i class="fas fa-chart-area"></i> Key Metrics</h3>
+          </div>
+          <ul class="key-metrics">
+            <li><span>Total Users</span><span class="metric-value">10,000</span></li>
+            <li><span>Activation Rate</span><span class="metric-value">65%</span></li>
+            <li><span>D7 Retention</span><span class="metric-value">20%</span></li>
+            <li><span>D30 Retention</span><span class="metric-value">0.24%</span></li>
+            <li><span>Total Revenue</span><span class="metric-value">$215K</span></li>
+            <li><span>ARPU</span><span class="metric-value">$21.51</span></li>
+            <li><span>ARPPU</span><span class="metric-value">$51.01</span></li>
+            <li><span>Referral Rate</span><span class="metric-value">12.57%</span></li>
+            <li><span>Export Rate</span><span class="metric-value">70%</span></li>
+            <li><span>AI Tool Usage</span><span class="metric-value">40%</span></li>
+          </ul>
+        </div>
+        
+        <!-- Retention Timeline -->
+        <div class="sidebar-card">
+          <div class="card-header">
+            <h3><i class="fas fa-hourglass-half"></i> Retention Timeline</h3>
+          </div>
+          <div class="timeline">
+            <div class="timeline-point day1 active">
+              <div class="point-circle"></div>
+              <div class="point-info">
+                <div class="point-day">Day 1</div>
+                <div class="point-rate">65%</div>
+              </div>
+            </div>
+            
+            <div class="timeline-point day7">
+              <div class="point-circle"></div>
+              <div class="point-info">
+                <div class="point-day">Day 7</div>
+                <div class="point-rate">20%</div>
+              </div>
+            </div>
+            
+            <div class="timeline-point day30 critical">
+              <div class="point-circle"></div>
+              <div class="point-info">
+                <div class="point-day">Day 30</div>
+                <div class="point-rate">0.24%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Resources -->
+        <div class="sidebar-card">
+          <div class="card-header">
+            <h3><i class="fas fa-folder-open"></i> Project Resources</h3>
+          </div>
+          <div class="project-resources">
+            <a href="https://github.com/Iamnavodyajain/canva-analytics" target="_blank" rel="noopener noreferrer" class="resource-btn">
+              <i class="fab fa-github"></i>
+              <span>GitHub Repository</span>
+            </a>
+            <a href="https://github.com/Iamnavodyajain/canva-analytics/blob/main/analysis-notebook.ipynb" target="_blank" rel="noopener noreferrer" class="resource-btn">
+              <i class="fas fa-code"></i>
+              <span>Analysis Notebook</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- North Star Metric -->
+        <div class="sidebar-card">
+          <div class="card-header">
+            <h3><i class="fas fa-compass"></i> North Star Metric</h3>
+          </div>
+          <h4 style="margin-top: var(--spacing-sm); color: var(--primary-lavender);">
+            "Number of users who export at least one design in their first 7 days."
+          </h4>
+          <p class="text-meta" style="margin-top: var(--spacing-sm);">
+            Exporting is the clearest proxy for value realized. Users who export within their first week are far more likely
+            to retain and convert to paid plans. Improving this metric is the fastest way to drive both retention and revenue.
+          </p>
+        </div>
+      </aside>
+    </div>
+    
+    <!-- Recommendations -->
+    <section class="floating-card" style="margin-top: var(--spacing-lg);">
+      <div class="card-header">
+        <h2 class="card-title"><i class="fas fa-lightbulb"></i> Product Recommendations</h2>
+        <div class="text-meta">Specific, actionable, prioritized</div>
+      </div>
+      
+      <div class="recommendations-grid">
+        <div class="recommendation-card">
+          <div class="recommendation-category">Retention</div>
+          <h4>Fix the Post–First-Project Drop-off</h4>
+          <p>
+            Introduce habit loops like "content calendar" views for social media managers, recurring reminders to
+            refresh designs, and prompts to create a second project immediately after export. Use lifecycle emails
+            to nudge users back before D7 and D14.
+          </p>
+        </div>
+        
+        <div class="recommendation-card">
+          <div class="recommendation-category">Feature Adoption</div>
+          <h4>Push High-Value Features Earlier</h4>
+          <p>
+            Add a mini-walkthrough for Brand Kit and AI tools right after the first design is created. Surface smart
+            suggestions like "Apply your brand" or "Generate copy with AI" to turn basic users into power users faster.
+          </p>
+        </div>
+        
+        <div class="recommendation-card">
+          <div class="recommendation-category">Collaboration</div>
+          <h4>Turn Solo Users into Teams</h4>
+          <p>
+            After a few exports, prompt users to invite collaborators. Introduce comments, approvals, and shared
+            folders to make Canva the default place where teams review and finalize creative work.
+          </p>
+        </div>
+        
+        <div class="recommendation-card">
+          <div class="recommendation-category">Growth</div>
+          <h4>Level Up Referrals</h4>
+          <p>
+            Move from one-off referrals to a milestone-based program: rewards for 1, 3, 5 successful invites. Tailor
+            incentives by persona (e.g., extra Brand Kit slots for SMBs, Pro trial extensions for creators).
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Roadmap -->
+    <section class="floating-card" style="margin-top: var(--spacing-lg);">
+      <div class="card-header">
+        <h2 class="card-title"><i class="fas fa-road"></i> Quarterly Product Roadmap</h2>
+        <div class="text-meta">From insights → execution</div>
+      </div>
+      
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">Q1 – Activation & Export Experience</div>
+          <div class="accordion-content">
+            <ul class="insights-list">
+              <li>Roll out the best-performing onboarding variant from A/B tests to all new users.</li>
+              <li>Redesign export CTA and confirmation screens to promote "next action" (duplicate, share, invite teammate).</li>
+              <li>Improve template discovery ranking for first-time users based on persona and channel.</li>
+              <li>Add basic export analytics so users see the value their designs are creating.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">Q2 – Habit Building & Retention</div>
+          <div class="accordion-content">
+            <ul class="insights-list">
+              <li>Ship content calendars for social-heavy personas with recurring design slots.</li>
+              <li>Introduce gentle in-product nudges and email journeys for "inactive since first export".</li>
+              <li>Add project organization features (folders, recents, favourites) to make repeat use easier.</li>
+              <li>Run experiments on weekly "design recap" or inspiration emails to improve WAU/MAU.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div class="accordion-header">Q3 – Teams, Collaboration & Monetization</div>
+          <div class="accordion-content">
+            <ul class="insights-list">
+              <li>Launch richer team collaboration: comments, mentions, approvals and shared brand kits.</li>
+              <li>Introduce dedicated Teams onboarding for SMB owners with "invite your team" flows.</li>
+              <li>Bundle advanced features (Brand Kit, collaboration, AI credits) into clear Teams value propositions.</li>
+              <li>Expand paywall and upgrade prompts around high-correlation features like Brand Kit and AI tools.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Insights -->
+    <section class="floating-card" style="margin-top: var(--spacing-lg);">
+      <div class="card-header">
+        <h2 class="card-title"><i class="fas fa-bullseye"></i> Key Insights</h2>
+        <div class="text-meta">Concise, portfolio-ready bullets</div>
+      </div>
+      
+      <ul class="insights-list">
+        <li>Activation is strong (~65% reach first design), but long-term retention is extremely weak (D30 ≈ 0.24%).</li>
+        <li>Most users behave like "single-project" users; there is no strong habit loop after the first successful export.</li>
+        <li>Templates are the primary value unlock, with ~85% of designs starting from a template.</li>
+        <li>AI tools show ~40% adoption and are a strong signal of higher engagement and monetization potential.</li>
+        <li>Brand Kit usage is the best predictor of Pro / Teams subscription and higher ARPU.</li>
+        <li>Collaboration remains underused (~9%) but is highly concentrated among top-paying SMB accounts.</li>
+        <li>Exports represent the "moment of value realized" and correlate with both better retention and higher revenue.</li>
+        <li>Students drive volume but SMB owners and social media managers drive most of the revenue.</li>
+        <li>Referrals are promising (~12.57% send at least one referral) but not yet structured as a scalable growth loop.</li>
+        <li>Experiments around onboarding and export CTAs are effective levers and should be part of an ongoing experimentation culture.</li>
+      </ul>
+    </section>
+    
+    <!-- Author Section -->
+    <section class="floating-card author-section" style="margin-top: var(--spacing-xl);">
+      <h2 style="margin-top: 0; margin-bottom: var(--spacing-xl);">About the Author</h2>
+      
+      <div class="author-header">
+        <div class="author-avatar">
+          <img src="resources/Authors'image.jpeg" alt="Navodya Jain" loading="lazy" />
+        </div>
+        <div class="author-info">
+          <h4 class="author-name">Navodya Jain</h4>
+          <p class="author-title">Product Generalist</p>
+        </div>
+      </div>
+      
+      <p class="author-bio">
+        I am Navodya Jain, a Product Generalist who blends product strategy, analytics, UX design, and development to craft end-to-end solutions. I use data-driven insights and creative problem-solving to understand users, identify product gaps, and design impactful, scalable improvements with a full-stack product mindset.
+      </p>
+      
+      <div class="author-links">
+        <a href="https://github.com/Iamnavodyajain" target="_blank" rel="noopener noreferrer" class="author-link">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/navodya-jain-3163a2300" target="_blank" rel="noopener noreferrer" class="author-link">
+          <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" class="author-link">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span>Portfolio</span>
+        </a>
+        <a href="mailto:jainnavodya@gmail.com" class="author-link">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span>Email</span>
+        </a>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="text-meta" style="margin: 0;">Canva Product Analytics Report • December 2025</p>
+      <p class="text-meta" style="margin: var(--spacing-xs) 0 0 0; font-size: 12px;">Built with data analysis, AARRR framework, and strategic product insights</p>
+      <p class="text-meta" style="margin: var(--spacing-xs) 0 0 0; font-size: 11px; color: var(--primary-violet);">Purple & Black Canva-inspired dashboard design</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tab functionality
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const tabId = tab.getAttribute('data-tab');
+          
+          // Remove active class from all tabs and contents
+          tabs.forEach(t => t.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          // Add active class to clicked tab and corresponding content
+          tab.classList.add('active');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+      
+      // Accordion functionality
+      const accordionItems = document.querySelectorAll('.accordion-item');
+      
+      accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        
+        header.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          // Close all accordions first
+          accordionItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+          });
+          
+          // If it wasn't active, open it
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+      
+      // Add hover effect to all cards
+      const cards = document.querySelectorAll('.floating-card, .kpi-tile, .feature-item, .sidebar-card, .visualization-item');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.zIndex = '10';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.zIndex = '1';
+        });
+      });
+      
+      // Disclaimer Popup functionality
+      const disclaimerPopup = document.getElementById('disclaimerPopup');
+      const closeDisclaimer = document.getElementById('closeDisclaimer');
+      
+      // Show disclaimer after 3 seconds
+      setTimeout(() => {
+        disclaimerPopup.classList.add('active');
+      }, 3000);
+      
+      // Close disclaimer when button is clicked
+      closeDisclaimer.addEventListener('click', () => {
+        disclaimerPopup.classList.remove('active');
+      });
+      
+      // Close disclaimer when clicking outside the popup
+      disclaimerPopup.addEventListener('click', (e) => {
+        if (e.target === disclaimerPopup) {
+          disclaimerPopup.classList.remove('active');
+        }
+      });
+      
+      // Close disclaimer with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && disclaimerPopup.classList.contains('active')) {
+          disclaimerPopup.classList.remove('active');
+        }
+      });
+      
+      // Add micro-interactions to feature icons
+      const featureIcons = document.querySelectorAll('.feature-icon, .visualization-icon');
+      featureIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.15) rotate(5deg)';
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1) rotate(0deg)';
+        });
+      });
+      
+      // Add pulse animation to critical metrics
+      const criticalMetrics = document.querySelectorAll('.kpi-trend.negative, .timeline-point.critical');
+      criticalMetrics.forEach(metric => {
+        metric.style.animation = 'pulse 2s infinite';
+      });
+      
+      // Add CSS for animations
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes pulse {
+          0% { opacity: 1; }
+          50% { opacity: 0.7; }
+          100% { opacity: 1; }
+        }
+        
+        /* Glow effect on hover */
+        .kpi-tile:hover, .visualization-item:hover {
+          animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+          from {
+            box-shadow: 0 0 10px rgba(126, 105, 171, 0.25), 0 0 20px rgba(126, 105, 171, 0.15);
+          }
+          to {
+            box-shadow: 0 0 20px rgba(126, 105, 171, 0.4), 0 0 30px rgba(126, 105, 171, 0.25);
+          }
+        }
+        
+        /* Subtty fade-in animation for cards */
+        .floating-card, .sidebar-card {
+          animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `;
+      document.head.appendChild(style);
+      
+      // Add gradient animation to header
+      const header = document.querySelector('.dashboard-header');
+      header.addEventListener('mouseenter', function() {
+        this.style.background = 'linear-gradient(135deg, #110D1F, #18142D, #2A2545)';
+      });
+      
+      header.addEventListener('mouseleave', function() {
+        this.style.background = 'var(--dark-card)';
+      });
+      
+      // Visualization placeholders removed — charts are embedded as <img> elements from `graphs/`
+    });
+  </script>
+</body>
+</html>
